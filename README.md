@@ -1,4 +1,4 @@
-# SDEK Salary Insights
+# cdek Salary Insights
 
 This is a web application for analyzing and visualizing salary data.
 
