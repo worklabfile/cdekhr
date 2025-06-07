@@ -1,0 +1,246 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CDEK Green Corporate Colors Design System */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* CDEK Green Primary Colors */
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 142 25% 92%;
+    --secondary-foreground: 142 76% 20%;
+
+    --muted: 142 15% 96%;
+    --muted-foreground: 142 25% 45%;
+
+    --accent: 142 50% 88%;
+    --accent-foreground: 142 76% 20%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 142 15% 88%;
+    --input: 142 15% 92%;
+    --ring: 142 76% 36%;
+
+    --radius: 0.75rem;
+
+    /* CDEK Custom Colors */
+    --cdek-green: 142 76% 36%;
+    --cdek-green-light: 142 60% 85%;
+    --cdek-green-dark: 142 76% 25%;
+    --cdek-accent: 35 100% 50%;
+    --cdek-success: 120 60% 50%;
+    --cdek-warning: 35 100% 60%;
+    --cdek-error: 0 70% 55%;
+  }
+
+  .dark {
+    --background: 142 15% 5%;
+    --foreground: 142 15% 95%;
+
+    --card: 142 15% 8%;
+    --card-foreground: 142 15% 95%;
+
+    --popover: 142 15% 8%;
+    --popover-foreground: 142 15% 95%;
+
+    --primary: 142 60% 60%;
+    --primary-foreground: 142 15% 8%;
+
+    --secondary: 142 15% 15%;
+    --secondary-foreground: 142 15% 85%;
+
+    --muted: 142 15% 12%;
+    --muted-foreground: 142 15% 65%;
+
+    --accent: 142 25% 18%;
+    --accent-foreground: 142 15% 85%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 142 15% 18%;
+    --input: 142 15% 15%;
+    --ring: 142 60% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* CDEK Custom Utilities */
+@layer utilities {
+  .bg-cdek-green {
+    background-color: hsl(var(--cdek-green));
+  }
+  
+  .text-cdek-green {
+    color: hsl(var(--cdek-green));
+  }
+  
+  .border-cdek-green {
+    border-color: hsl(var(--cdek-green));
+  }
+  
+  .bg-cdek-gradient {
+    background: linear-gradient(135deg, hsl(var(--cdek-green)) 0%, hsl(var(--cdek-green-dark)) 100%);
+  }
+  
+  .shadow-cdek {
+    box-shadow: 0 4px 20px -2px hsl(var(--cdek-green) / 0.2);
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    .container {
+      @apply px-3;
+    }
+  }
+  
+  /* Touch targets for mobile */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+  
+  /* Better scrolling on mobile */
+  .smooth-scroll {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+}
+
+/* Component-specific responsive styles */
+@layer components {
+  .mobile-card {
+    @apply shadow-sm border border-border/50 bg-card/50 backdrop-blur-sm;
+  }
+  
+  .mobile-input {
+    @apply h-10 text-sm border-border/50 focus:border-primary;
+  }
+  
+  .mobile-button {
+    @apply h-10 px-4 text-sm font-medium;
+  }
+  
+  .mobile-nav-item {
+    @apply flex items-center space-x-3 px-4 py-3 text-sm font-medium rounded-lg transition-colors;
+  }
+  
+  .mobile-tab-content {
+    @apply space-y-4 animate-fade-in;
+  }
+}
+
+/* Fix for sheet overlay z-index */
+[data-radix-scroll-area-viewport] {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+[data-radix-scroll-area-viewport]::-webkit-scrollbar {
+  display: none;
+}
+
+/* Enhanced z-index management for dropdowns and overlays */
+[data-radix-select-content] {
+  @apply z-[100] bg-card border-border shadow-lg;
+}
+
+[data-radix-popover-content] {
+  @apply z-[100] bg-card border-border shadow-lg;
+}
+
+[data-radix-dialog-overlay] {
+  @apply z-[200];
+}
+
+[data-radix-dialog-content] {
+  @apply z-[201];
+}
+
+[data-radix-sheet-overlay] {
+  @apply z-[300];
+}
+
+[data-radix-sheet-content] {
+  @apply z-[301];
+}
+
+[data-radix-toast-viewport] {
+  @apply z-[400];
+}
+
+/* Prevent layout shifts and overlapping */
+.header-fixed {
+  @apply sticky top-0 z-50;
+}
+
+.main-content {
+  @apply relative z-10;
+}
+
+.dropdown-content {
+  @apply z-[100] bg-card/95 backdrop-blur-sm border-border shadow-lg;
+}
+
+/* Enhanced mobile touch interactions */
+@media (max-width: 768px) {
+  .touch-friendly {
+    @apply min-h-[44px] min-w-[44px] touch-manipulation;
+  }
+  
+  /* Prevent horizontal scroll */
+  .mobile-container {
+    @apply overflow-x-hidden;
+  }
+  
+  /* Better spacing for mobile */
+  .mobile-spacing {
+    @apply space-y-3 px-3;
+  }
+}
+
+/* Animation optimizations */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in {
+    animation: none;
+  }
+}
