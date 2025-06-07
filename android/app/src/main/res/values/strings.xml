@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">cdekhr</string>
+    <string name="title_activity_main">cdekhr</string>
+    <string name="package_name">com.cdek.hr</string>
+    <string name="custom_url_scheme">com.cdek.hr</string>
+</resources>
