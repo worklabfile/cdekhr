@@ -21,6 +21,9 @@ const DataEntryForm = ({ selectedTemplate }: DataEntryFormProps) => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Log form data to console
+    console.log('Form Data:', JSON.stringify(formData, null, 2));
+
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000));
 
